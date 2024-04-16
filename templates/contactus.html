@@ -1,0 +1,40 @@
+<!--
+    Author: 0xmani (aka) Malware mani
+    Project: Contact us HTML
+-->
+
+{% extends 'base.html' %}
+
+{% block head %}
+<title>Vault Shopping | Contact</title>
+{% endblock %}
+
+{% block nav %}
+    <b>Logged as {{ name }}</b>
+{% endblock %}
+
+{% block body %}
+<br>
+{% with logmsg = get_flashed_messages() %}
+         {% if logmsg %}  
+             {% for message in logmsg %}  
+             <div class="alert alert-success" role="alert"><p>{{ message }}</div></p>  
+             {% endfor %}  
+         {% endif %}  
+     {% endwith %}
+<h2><b>Contact Us</b></h2>
+
+<p>
+    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fugit quidem suscipit quae voluptatibus, distinctio assumenda ad itaque aliquid maxime! Consectetur saepe itaque dolorem cupiditate repellendus praesentium magnam culpa voluptas possimus.
+    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Atque, consequatur quaerat minima reiciendis sed asperiores repellat? Illum cumque ut eaque, itaque doloremque voluptates saepe quia, facilis ad enim ipsa recusandae.
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt reiciendis quo aliquam delectus necessitatibus, excepturi, quia sit commodi eveniet libero obcaecati repudiandae non. Eveniet ullam sint suscipit quis recusandae sequi?
+    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fugit quidem suscipit quae voluptatibus, distinctio assumenda ad itaque aliquid maxime! Consectetur saepe itaque dolorem cupiditate repellendus praesentium magnam culpa voluptas possimus.
+    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Atque, consequatur quaerat minima reiciendis sed asperiores repellat? Illum cumque ut eaque, itaque doloremque voluptates saepe quia, facilis ad enim ipsa recusandae.
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt reiciendis quo aliquam delectus necessitatibus, excepturi, quia sit commodi eveniet libero obcaecati repudiandae non. Eveniet ullam sint suscipit quis recusandae sequi?
+    <br>
+    <p><b>Contact Email: manikandan.n@vaultinfosec.com</b></p>
+
+</p>
+
+
+{% endblock %}

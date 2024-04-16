@@ -1,0 +1,28 @@
+<!--
+    Author: 0xmani (aka) Malware mani
+    Project: Trackorder HTML
+-->
+
+{% extends 'base.html' %}
+
+{% block head %}
+<title>Vault Shopping | Track Orders</title>
+{% endblock %}
+
+{% block nav %}
+    <b>Logged as {{ name }}</b>
+{% endblock %}
+
+{% block body %}
+<br>
+{% with logmsg = get_flashed_messages() %}
+         {% if logmsg %}  
+             {% for message in logmsg %}  
+             <div class="alert alert-success" role="alert"><p>{{ message }}</div></p>  
+             {% endfor %}  
+         {% endif %}  
+     {% endwith %}
+
+     
+
+{% endblock %}

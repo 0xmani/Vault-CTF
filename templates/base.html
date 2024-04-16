@@ -1,0 +1,88 @@
+<!--
+    Author: 0xmani (aka) Malware mani
+    Project: Base HTML
+-->
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.2/css/fontawesome.min.css" integrity="sha384-BY+fdrpOd3gfeRvTSMT+VUZmA728cfF9Z2G42xpaRkUGu2i3DyzpTURDo5A6CaLK" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" integrity="sha384-4LISF5TTJX/fLmGSxO53rV4miRxdg84mZsxmO8Rx5jGtp/LbrixFETvWa5a6sESd" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootswatch@4.5.2/dist/cosmo/bootstrap.min.css" integrity="sha384-5QFXyVb+lrCzdN228VS3HmzpiE7ZVwLQtkt+0d9W43LQMzz4HBnnqvVxKg6O+04d" crossorigin="anonymous">
+    {% block head %} {% endblock %}
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg bg-primary" data-bs-theme="dark">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">Vault Shopping</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarColor01">
+            <ul class="navbar-nav me-auto">
+              <li class="nav-item">
+                <a class="nav-link active" href="/">Home
+                  <span class="visually-hidden">(current)</span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/products">Products</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/cart">Cart</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/profile">Profile</a>
+              </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/my-orders">Track Orders</a>
+                    </li>
+                    {% if session.role == 'admin' %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="/addproducts">Add Products</a>
+                    </li>
+                {% endif %}
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">More</a>
+                <div class="dropdown-menu">
+                  <a class="dropdown-item" href="/contact-us">Contact Us</a>
+                  <a class="dropdown-item" href="/fetchimage">Image Fetcher</a>
+                  <a class="dropdown-item" href="/upload_reviews">Reviews</a>
+                  <div class="dropdown-divider"></div>
+                  {% if session.role == 'admin' %}
+                  <a class="dropdown-item" href="/admin/orders">Orders</a>
+                  {% endif %}
+                </div>
+              </li>
+              {% if 'username' in session %}
+              <li class="nav-item">
+                  <a class="nav-link" href="/logout">Logout</a>
+              </li>
+            {% else %}
+              <li class="nav-item">
+                  <a class="nav-link" href="/login">Login</a>
+              </li>
+            {% endif %}
+            </ul>
+            <form class="d-flex" action="/search" method="GET">
+              <input class="form-control me-sm-2" type="search" name="query" placeholder="Search">
+              <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
+            </form>
+          </div>
+        </div>
+      </nav>
+      <div class="container">
+        {% block body %} {% endblock %}
+      </div>
+      <h2>{{ query|safe }}</h2>
+
+
+</body>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+
+</html>

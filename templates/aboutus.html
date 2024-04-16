@@ -1,0 +1,44 @@
+<!--
+    Author: 0xmani (aka) Malware mani
+    Project: About us HTML
+-->
+
+{% extends 'base.html' %}
+
+{% block head %}
+<title>Vault Shopping | About us</title>
+{% endblock %}
+
+{% block nav %}
+    <b>Logged as {{ name }}</b>
+{% endblock %}
+
+{% block body %}
+<br>
+{% with logmsg = get_flashed_messages() %}
+         {% if logmsg %}  
+             {% for message in logmsg %}  
+             <div class="alert alert-success" role="alert"><p>{{ message }}</div></p>  
+             {% endfor %}  
+         {% endif %}  
+     {% endwith %}
+<h2><b>About Us</b></h2>
+
+<p>
+    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fugit quidem suscipit quae voluptatibus, distinctio assumenda ad itaque aliquid maxime! Consectetur saepe itaque dolorem cupiditate repellendus praesentium magnam culpa voluptas possimus.
+    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Atque, consequatur quaerat minima reiciendis sed asperiores repellat? Illum cumque ut eaque, itaque doloremque voluptates saepe quia, facilis ad enim ipsa recusandae.
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt reiciendis quo aliquam delectus necessitatibus, excepturi, quia sit commodi eveniet libero obcaecati repudiandae non. Eveniet ullam sint suscipit quis recusandae sequi?
+    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Odit a doloribus commodi repellendus dolorem temporibus consequatur. Laboriosam, libero corrupti. Quaerat maxime earum quae culpa animi dicta corporis asperiores dolores iste?
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore quidem molestiae eaque aliquid corrupti totam nostrum recusandae! Porro impedit, sint eligendi, atque culpa voluptatibus ut natus incidunt animi excepturi provident.
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur accusantium impedit assumenda, labore aperiam amet et, vel temporibus, delectus quisquam dolore accusamus vero? Excepturi expedita doloribus nam commodi placeat magnam?
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem rem eius ut sit, dolorum sed quibusdam sint vitae deserunt voluptatum temporibus aliquid aut magni, in, reprehenderit laborum error! Quaerat, eius?
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Expedita fugiat rem reprehenderit aspernatur quae maxime perspiciatis autem hic cum possimus, neque a ad mollitia nihil dolorem molestias ullam ex esse.
+    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Unde ducimus neque aperiam? Voluptate recusandae nobis fugiat quas voluptas fuga debitis, libero voluptatum illo rerum deleniti quisquam beatae dolores facilis quia.
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique ullam odio consequuntur voluptatum numquam corrupti eius ex vel accusamus nemo non tempore provident quae aspernatur quaerat, sequi, illo libero expedita.
+
+
+
+</p>
+
+
+{% endblock %}

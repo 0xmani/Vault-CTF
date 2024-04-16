@@ -1,0 +1,39 @@
+
+<!--
+    Author: 0xmani (aka) Malware mani
+    Project: Cart HTML
+-->
+
+{% extends 'base.html' %}
+
+{% block head %}
+<title>Vault Shopping | Your Cart</title>
+{% endblock %}
+
+{% block nav %}
+    <b>Logged as {{ name }}</b>
+{% endblock %}
+
+{% block body %}
+<br>
+{% with logmsg = get_flashed_messages() %}
+         {% if logmsg %}  
+             {% for message in logmsg %}  
+             <div class="alert alert-success" role="alert"><p>{{ message }}</div></p>  
+             {% endfor %}  
+         {% endif %}  
+     {% endwith %}
+
+     <h2><b>Your Cart</b></h2>
+     <ul>
+        {% for item in cart_items %}
+            <li>
+                <img src="{{ url_for('static', filename=item.image_url) }}" alt="{{ item.name }}" style="width: 50px; height: auto;">
+                {{ item.name }} - ${{ item.price }}
+                <!-- Add a Buy Now button for each item -->
+                <a href="{{ url_for('buy_now', product_id=item.product_id, price=item.price) }}" class="btn btn-primary">Buy Now</a>
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}
+

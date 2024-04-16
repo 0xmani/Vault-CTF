@@ -1,0 +1,64 @@
+<!--
+    Author: 0xmani (aka) Malware mani
+    Project: Add Products HTML
+-->
+
+{% extends 'base.html' %}
+
+{% block head %}
+<title>Vault Shopping | Add Products</title>
+{% endblock %}
+
+{% block nav %}
+    <b>Logged as {{ name }}</b>
+{% endblock %}
+
+{% block body %}
+<br>
+{% with logmsg = get_flashed_messages() %}
+         {% if logmsg %}  
+             {% for message in logmsg %}  
+             <div class="alert alert-success" role="alert"><p>{{ message }}</div></p>  
+             {% endfor %}  
+         {% endif %}  
+     {% endwith %}
+
+
+{% if 'username' in session and session['role'] == 'admin' %}
+    <h2><b>Add Products</b></h2>
+    <br>
+    <form method="post" enctype="multipart/form-data">
+
+        <div class="form-group">
+            <label class="col-form-label mt-4" for="inputDefault">Product Name:</label><br>
+            <input type="text" class="form-control" name="product_name" placeholder="Product Name" id="inputDefault">
+        </div>
+
+        <div class="form-group">
+            <label class="col-form-label mt-4" for="inputDefault">Product Description:</label><br>
+            <input type="text" class="form-control" name="product_description" placeholder="Product Description" id="inputDefault">
+        </div>
+
+        <div class="form-group">
+            <label class="col-form-label mt-4" for="inputDefault">Product Stock:</label>
+            <input type="number" class="form-control" name="product_stock" placeholder="Product Stock" id="inputDefault">
+        </div>
+
+        <div class="form-group">
+            <label class="col-form-label mt-4" for="inputDefault">Product Price:</label>
+            <input type="number" class="form-control" name="product_price" placeholder="Product Price" id="inputDefault">
+        </div>
+
+        <div class="form-group">
+            <label for="formFile" class="form-label mt-4">Product Image</label>
+            <input class="form-control" type="file" name="image_url" id="formFile">
+        </div>
+
+        <br><button type="submit" class="btn btn-primary btn-block">Add Product</button><br>
+    </form>
+
+{% else %}
+    <p>Access Denied: You are not authorized to view this page.</p>
+{% endif %}
+
+{% endblock %}

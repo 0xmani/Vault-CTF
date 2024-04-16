@@ -1,0 +1,99 @@
+<!--
+    Author: 0xmani (aka) Malware mani
+    Project: Profile HTML
+-->
+
+{% extends 'base.html' %}
+
+{% block head %}
+<title>Vault Shopping | Home</title>
+{% endblock %}
+
+{% block nav %}
+    <b>Logged as {{ name }}</b>
+{% endblock %}
+
+{% block body %}
+<br>
+{% with logmsg = get_flashed_messages() %}
+         {% if logmsg %}  
+             {% for message in logmsg %}  
+             <div class="alert alert-success" role="alert"><p>{{ message }}</div></p>  
+             {% endfor %}  
+         {% endif %}  
+     {% endwith %}
+
+     <center><h2><b>My Profile</b></h2><br></center>
+     <div class="profile-container">
+        <div class="profile-header">
+            {% if user.profile_pic %}
+                <img src="{{ url_for('static', filename=user.profile_pic) }}" alt="Profile Picture" class="profile-pic">
+            {% else %}
+                <img src="{{ url_for('static', filename='default_profile_pic.jpg') }}" alt="Default Profile Picture" class="profile-pic">
+            {%endif %}
+            <h2>{{ user.first_name }} {{ user.last_name }}</h2>
+        </div>
+        <div class="profile-details">
+            <p><b>Username:</b> {{ user.username }}</p>
+            <p><b>Firstname:</b> {{user.first_name |safe}}</p>
+            <p><b>Lastname:</b> {{user.last_name |safe}}</p>
+            <p><b>Email:</b> {{ user.email }}</p>
+            <p><b>Address:</b> {{ user.address }}</p>
+            <p><b>Mobile:</b> {{ user.mobile_number }}</p>
+            <p><b>Profile URL: </b><a href="{{ user.profile_url }}">{{ user.profile_url }}</a></p>
+        </div>
+        <div class="profile-actions">
+            <a href="{{ url_for('editprofile') }}" class="btn btn-primary">Edit Profile</a>
+        </div>
+    </div>
+
+    <style>
+        .profile-container {
+    max-width: 800px;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+}
+
+.profile-header {
+    text-align: center;
+}
+
+.profile-pic {
+    width: 150px;
+    height: 140px;
+    border-radius: 50%;
+    border: 3px solid #333;
+}
+
+.profile-details {
+    margin-top: 20px;
+}
+
+.profile-details p {
+    font-size: 18px;
+    line-height: 1.6;
+}
+
+.profile-actions {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.btn-primary {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+}
+
+    </style>
+
+{% endblock %}

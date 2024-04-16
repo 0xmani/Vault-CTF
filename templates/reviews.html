@@ -1,0 +1,51 @@
+<!--
+    Author: 0xmani (aka) Malware mani
+    Project: Base HTML
+-->
+
+{% extends 'base.html' %}
+
+{% block head %}
+<title>Vault Shopping | Home</title>
+{% endblock %}
+
+{% block nav %}
+    <b>Logged as {{ name }}</b>
+{% endblock %}
+
+{% block body %}
+<br>
+{% with logmsg = get_flashed_messages() %}
+         {% if logmsg %}  
+             {% for message in logmsg %}  
+             <div class="alert alert-success" role="alert"><p>{{ message }}</div></p>  
+             {% endfor %}  
+         {% endif %}  
+     {% endwith %}
+
+     <h2><b>Upload your Reviews</b></h2><br><br>
+     <p>Download Sample File:</p>
+     <form method="GET" action="{{ url_for('downloadxml') }}">
+        <button type="submit" class="btn-secondary">Download</button><br><br>
+     </form>
+
+
+     <form method="POST" action="{{ url_for('upload_reviews') }}" enctype="multipart/form-data">
+        <input type="file" name="file">
+        <input type="submit" value="Upload" class="btn-primary">
+    </form>
+    <br>
+    <br>
+    <title>Product Reviews</title>
+    {% for review in reviews %}
+    <div>
+        <p>Review by {{ review.reviewer }}</p>
+        <p>Product: {{ review.product }}</p>
+        <p>Rating: {{ review.rating }}</p>
+        <p>{{ review.text }}</p>
+    </div>
+    {% else %}
+        <p>No reviews to display.</p>
+    {% endfor %}
+
+{% endblock %}

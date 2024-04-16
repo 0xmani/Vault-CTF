@@ -1,0 +1,64 @@
+<!--
+    Author: 0xmani (aka) Malware mani
+    Project: Profile HTML
+-->
+
+{% extends 'base.html' %}
+
+{% block head %}
+<title>Vault Shopping | Home</title>
+{% endblock %}
+
+{% block nav %}
+    <b>Logged as {{ name }}</b>
+{% endblock %}
+
+{% block body %}
+<br>
+{% with logmsg = get_flashed_messages() %}
+         {% if logmsg %}  
+             {% for message in logmsg %}  
+             <div class="alert alert-success" role="alert"><p>{{ message }}</div></p>  
+             {% endfor %}  
+         {% endif %}  
+     {% endwith %}
+
+     <h2><b>My Profile</b></h2><br>
+     <!--<form method="post" enctype="multipart/form-data"> -->
+    <form method="POST" action="{{ url_for('editprofile') }}" enctype="multipart/form-data">
+        {% if user.profile_pic %}
+            <img src="{{ url_for('static', filename=user.profile_pic) }}" alt="Profile Picture" height="100px"><br><br>
+        {% else %}
+            <img src="{{ url_for('static', filename='static/to/default/image.png') }}" alt="Default Profile Picture"><br>
+        {% endif %}
+         
+         <div>
+             <label for="first_name">First Name:</label><br>
+             <input type="text" id="first_name" name="first_name" value="{{ user.first_name }}"><br><br>
+         </div>
+         <div>
+             <label for="last_name">Last Name:</label><br>
+             <input type="text" id="last_name" name="last_name" value="{{ user.last_name }}"><br><br>
+         </div>
+         <div>
+            <label for="address">Address:</label><br>
+            <input type="text" id="last_name" name="address" value="{{ user.address }}"><br><br>
+        </div>
+        <div>
+            <label for="mobile_number">Mobile Number:</label><br>
+            <input type="text" id="last_name" name="mobile_number" value="{{ user.mobile_number }}"><br><br>
+        </div>
+
+        <div>
+            <label for="mobile_number">Website URL</label><br>
+            <input type="url" name="profile_url" placeholder="Your URL" value="{{ user.profile_url }}">
+        </div>
+         <div>
+             <label for="profile_pic">Profile Picture:</label><br>
+             <input type="file" id="profile_pic" name="profile_pic"><br><br>
+         </div>
+        
+         <button type="submit" class="btn-primary">Update Profile</button><br><br>
+     </form>
+
+{% endblock %}

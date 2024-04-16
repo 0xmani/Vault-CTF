@@ -1,0 +1,48 @@
+<!--
+    Author: 0xmani (aka) Malware mani
+    Project: Admin Orders HTML
+-->
+
+{% extends 'base.html' %}
+
+{% block head %}
+<title>Vault Shopping | Orders</title>
+{% endblock %}
+
+{% block nav %}
+    <b>Logged as {{ name }}</b>
+{% endblock %}
+
+{% block body %}
+<br>
+{% with logmsg = get_flashed_messages() %}
+         {% if logmsg %}  
+             {% for message in logmsg %}  
+             <div class="alert alert-success" role="alert"><p>{{ message }}</div></p>  
+             {% endfor %}  
+         {% endif %}  
+     {% endwith %}
+
+     <h2><b>Orders</b></h2>
+     <div class="orders">
+        {% for order in orders %}
+            <div class="order">
+                <img src="{{ url_for('static', filename=order.image_url) }}" alt="{{ order.name }}" style="width: 100px; height: auto;">
+                <h5>{{ order.name }}</h5>
+                <p>Price: ${{ order.price }}</p>
+                <p>Order ID: {{order.order_id}}</p>
+                <p>User ID: {{ order.user_id }}</p>
+                <p>Status: {{ order.order_status }}</p>
+                <a href="{{ url_for('update_order_status', order_id=order.order_id, new_status='Approved') }}" class="btn btn-primary">Approve</a>
+                <a href="{{ url_for('update_order_status', order_id=order.order_id, new_status='Out of Stock') }}" class="btn btn-primary">Decline</a>
+                <a href="{{ url_for('update_order_status', order_id=order.order_id, new_status='Packed') }}" class="btn btn-primary">Packed</a>
+                <a href="{{ url_for('update_order_status', order_id=order.order_id, new_status='Delivered') }}" class="btn btn-primary">Delivered</a><br><br>
+            </div>
+        {% else %}
+            <p>No orders found.</p>
+        {% endfor %}
+    </div>
+
+{% endblock %}
+
+

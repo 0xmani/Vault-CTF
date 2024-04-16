@@ -1,0 +1,32 @@
+<!--
+    Author: 0xmani (aka) Malware mani
+    Project: Fetch Image HTML
+-->
+
+{% extends 'base.html' %}
+
+{% block head %}
+<title>Vault Shopping | Home</title>
+{% endblock %}
+
+{% block nav %}
+    <b>Logged as {{ name }}</b>
+{% endblock %}
+
+{% block body %}
+<br>
+{% with logmsg = get_flashed_messages() %}
+         {% if logmsg %}  
+             {% for message in logmsg %}  
+             <div class="alert alert-success" role="alert"><p>{{ message }}</div></p>  
+             {% endfor %}  
+         {% endif %}  
+     {% endwith %}
+
+     <h2><b>Image Fetcher</b></h2><br>
+     <form method="POST">
+        <input type="text" name="image_url" placeholder="Enter image URL"><br><br>
+        <button type="submit" class="btn-primary">Import Image</button>
+    </form>
+
+{% endblock %}

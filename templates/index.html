@@ -1,0 +1,31 @@
+<!--
+    Author: 0xmani (aka) Malware mani
+    Project: Base HTML
+-->
+
+{% extends 'base.html' %}
+
+{% block head %}
+<title>Vault Shopping | Home</title>
+{% endblock %}
+
+{% block nav %}
+    <b>Logged as {{ name }}</b>
+{% endblock %}
+
+{% block body %}
+<br>
+{% with logmsg = get_flashed_messages() %}
+         {% if logmsg %}  
+             {% for message in logmsg %}  
+             <div class="alert alert-success" role="alert"><p>{{ message }}</div></p>  
+             {% endfor %}  
+         {% endif %}  
+     {% endwith %}
+
+     <center>
+        <h1 style="margin-top: 200px;"><b>Welcome to the Shopping Site!</b></h1>
+    </center>
+     
+
+{% endblock %}
